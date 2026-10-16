@@ -138,9 +138,9 @@ export const storyMilestones: StoryMilestone[] = [
     tilt: -1.5
   },
   {
-    act: "ACT II: THE SACRED GOLDEN RING EXCHANGE",
-    title: "Vows of Devotion",
-    quote: '"With eyes locked and hearts united, exchanging golden vows of eternal devotion."',
+    act: "ACT II: SHIVANI & HER SIBLINGS",
+    title: "Bonds of Love",
+    quote: '"The ones who grew up with her laughter, now cheering loudest for her forever."',
     photoUrl: encodeURI("./photos/more (34).jpg"),
     tilt: 1.2
   },
