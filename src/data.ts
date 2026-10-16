@@ -64,7 +64,8 @@ export interface SongTrack {
   title: string;
   film: string;
   year: string;
-  youtubeId: string;
+  youtubeId?: string;
+  audioSrc?: string;
 }
 
 export const siteConfig = {
@@ -346,18 +347,6 @@ export const musicPlaylist: SongTrack[] = [
     title: "Tere Bina Zindagi Se",
     film: "Aandhi",
     year: "1975",
-    youtubeId: "jXlCgLh44vQ"
-  },
-  {
-    title: "Chura Liya Hai Tumne Jo Dil Ko",
-    film: "Yaadon Ki Baaraat",
-    year: "1973",
-    youtubeId: "Gg636E5N120"
-  },
-  {
-    title: "O Mere Dil Ke Chain",
-    film: "Mere Jeevan Saathi",
-    year: "1972",
-    youtubeId: "uJvYw62gB60"
+    audioSrc: "./tere-bina.mp3"
   }
 ];
