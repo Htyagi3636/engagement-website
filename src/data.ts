@@ -76,7 +76,7 @@ export const siteConfig = {
     heroBanner: "The Royal Engagement",
     heroTagline: "A Grand 70mm Love Story — Now Showing",
     productionHouse: "HARI SANGEET & VENUS FILMS PRESENT",
-    heroImage: "./photos/hero.jpg",
+    heroImage: encodeURI("./photos/more (1).jpg"),
     credits: {
       music: "R.D. Burman",
       directedBy: "Destiny",
@@ -133,21 +133,21 @@ export const storyMilestones: StoryMilestone[] = [
     quote: '"Stepping into forever amidst floating clouds, glistening bubbles, and starry spotlights."',
     note: "✨ TAP PHOTO TO POP SHIMMERING BUBBLES",
     badge: "Bubble Shower",
-    photoUrl: "./photos/milestone-1.jpg",
+    photoUrl: encodeURI("./photos/more (9).jpg"),
     tilt: -1.5
   },
   {
     act: "ACT II: THE SACRED GOLDEN RING EXCHANGE",
     title: "Vows of Devotion",
     quote: '"With eyes locked and hearts united, exchanging golden vows of eternal devotion."',
-    photoUrl: "./photos/milestone-2.jpg",
+    photoUrl: encodeURI("./photos/more (34).jpg"),
     tilt: 1.2
   },
   {
     act: "ACT III: HATHPHOOL, MEHNDI & CLASPED HANDS",
     title: "Warm Embrace",
     quote: '"Intricate henna swirls and sparkling bangles sealed in a warm, unbreakable embrace."',
-    photoUrl: "./photos/milestone-3.jpg",
+    photoUrl: encodeURI("./photos/more (81).jpg"),
     tilt: -0.8
   },
   {
@@ -164,7 +164,7 @@ export const storyMilestones: StoryMilestone[] = [
     act: "ACT V: FAMILY BLESSINGS ON THE ROYAL THRONE",
     title: "Royal Throne",
     quote: '"Surrounded by warmth, elders\' blessings, and joyous family smiles."',
-    photoUrl: "./photos/milestone-5.jpg",
+    photoUrl: encodeURI("./photos/more (80).jpg"),
     tilt: -1.2
   }
 ];
@@ -178,37 +178,37 @@ export const filmReelItems: FilmReelItem[] = [
     id: "reel-101",
     tag: "KODAK 400 • #101",
     title: "Bubble Dance",
-    src: "./photos/plate-01.jpg"
+    src: encodeURI("./photos/more (1).jpg")
   },
   {
     id: "reel-102",
     tag: "KODAK 400 • #102",
     title: "Cloud Walk",
-    src: "./photos/plate-02.jpg"
+    src: encodeURI("./photos/more (10).jpg")
   },
   {
     id: "reel-103",
     tag: "KODAK 400 • #103",
     title: "Golden Vows",
-    src: "./photos/plate-03.jpg"
+    src: encodeURI("./photos/more (20).jpg")
   },
   {
     id: "reel-104",
     tag: "KODAK 400 • #104",
     title: "Regal Aisle",
-    src: "./photos/plate-04.jpg"
+    src: encodeURI("./photos/more (30).jpg")
   },
   {
     id: "reel-105",
     tag: "KODAK 400 • #105",
     title: "Gajra & Grace",
-    src: "./photos/plate-07.jpg"
+    src: encodeURI("./photos/more (40).jpg")
   },
   {
     id: "reel-106",
     tag: "KODAK 400 • #106",
     title: "Royal Throne",
-    src: "./photos/plate-12.jpg"
+    src: encodeURI("./photos/more (60).jpg")
   }
 ];
 
