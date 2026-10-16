@@ -2,10 +2,10 @@
 
 @layer base {
   :root {
-    --font-bodoni: 'Bodoni Moda', Georgia, serif;
-    --font-newsreader: 'Newsreader', Georgia, serif;
-    --font-courier: 'Courier Prime', 'Courier New', monospace;
-    --font-script: 'Alex Brush', cursive;
+    --font-bodoni: 'Playfair Display', Georgia, serif;
+    --font-newsreader: 'Lora', Georgia, serif;
+    --font-courier: 'Josefin Sans', 'Segoe UI', sans-serif;
+    --font-script: 'Great Vibes', cursive;
   }
 
   body {
