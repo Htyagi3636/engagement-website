@@ -1,10 +1,6 @@
 import React from 'react';
 
-interface CinemaTicketNavProps {
-  onOpenPhotoManager?: () => void;
-}
-
-export const CinemaTicketNav: React.FC<CinemaTicketNavProps> = ({ onOpenPhotoManager }) => {
+export const CinemaTicketNav: React.FC = () => {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -22,7 +18,7 @@ export const CinemaTicketNav: React.FC<CinemaTicketNavProps> = ({ onOpenPhotoMan
 
   return (
     <nav
-      className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 max-w-lg w-[96vw] sm:w-auto select-none"
+      className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 max-w-md w-[94vw] sm:w-auto select-none"
       aria-label="Cinema Ticket Navigation"
     >
       {/* VINTAGE CINEMA TICKET STUB */}
@@ -48,20 +44,6 @@ export const CinemaTicketNav: React.FC<CinemaTicketNavProps> = ({ onOpenPhotoMan
             </span>
           </button>
         ))}
-
-        {/* Change Photos Direct Trigger */}
-        <button
-          onClick={onOpenPhotoManager}
-          className="flex flex-col items-center justify-center px-2 sm:px-3 py-1 rounded bg-[#fcbf55]/30 hover:bg-[#fcbf55]/50 border border-[#d49b35]/60 text-[#724d00] transition-all group active:scale-95 cursor-pointer"
-          title="Upload or customize photos"
-        >
-          <span className="text-sm group-hover:scale-110 transition-transform">
-            📷
-          </span>
-          <span className="font-courier text-[9px] sm:text-[10px] tracking-wider uppercase text-[#724d00] font-bold mt-0.5">
-            PHOTOS
-          </span>
-        </button>
       </div>
     </nav>
   );

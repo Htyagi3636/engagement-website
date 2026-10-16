@@ -12,14 +12,11 @@ import { BirdsOverlay } from './components/BirdsOverlay';
 import { PetalsHearts } from './components/PetalsHearts';
 import { MusicPlayer } from './components/MusicPlayer';
 import { CinemaTicketNav } from './components/CinemaTicketNav';
-import { PhotoManagerModal } from './components/PhotoManagerModal';
 
 export default function App() {
   const [curtainsOpen, setCurtainsOpen] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isLetterOpen, setIsLetterOpen] = useState<boolean>(false);
-  const [isPhotoManagerOpen, setIsPhotoManagerOpen] = useState<boolean>(false);
-  const [photoManagerSlotKey, setPhotoManagerSlotKey] = useState<string>('hero');
 
   // When user taps "Tap to Start the Show ♥"
   const handleStartShow = () => {
@@ -29,11 +26,6 @@ export default function App() {
 
   const handleTogglePlay = () => {
     setIsPlaying((prev) => !prev);
-  };
-
-  const handleOpenPhotoManager = (slotKey?: string) => {
-    setPhotoManagerSlotKey(slotKey || 'hero');
-    setIsPhotoManagerOpen(true);
   };
 
   // Keyboard shortcut: space to play/pause music
@@ -72,7 +64,6 @@ export default function App() {
         <HeroSection
           onPlayMusic={handleTogglePlay}
           isPlaying={isPlaying}
-          onOpenPhotoManager={handleOpenPhotoManager}
         />
 
         {/* 3. ARCHIVED MILESTONES: Tilted Polaroids & Chole Kulche Memory Card */}
@@ -82,9 +73,7 @@ export default function App() {
         <FilmReelSection />
 
         {/* 5. ARCHIVAL GALLERY: Responsive Masonry Grid with 14 Plates & Fullscreen Lightbox */}
-        <GallerySection
-          onOpenPhotoManager={handleOpenPhotoManager}
-        />
+        <GallerySection />
 
         {/* 6. QUOTE: Parallax R.D. Burman Lyric Card */}
         <QuoteSection />
@@ -105,9 +94,7 @@ export default function App() {
       </main>
 
       {/* FLOATING VINTAGE CINEMA TICKET NAVIGATION DOCK */}
-      <CinemaTicketNav
-        onOpenPhotoManager={() => handleOpenPhotoManager('hero')}
-      />
+      <CinemaTicketNav />
 
       {/* HIDDEN YOUTUBE IFRAME AUDIO & SPINNING VINYL CONTROLS */}
       <MusicPlayer
@@ -115,13 +102,6 @@ export default function App() {
         onTogglePlay={handleTogglePlay}
         isLetterOpen={isLetterOpen}
         shouldStartAudio={curtainsOpen}
-      />
-
-      {/* PHOTO CUSTOMIZER / REPLACEMENT MODAL */}
-      <PhotoManagerModal
-        isOpen={isPhotoManagerOpen}
-        onClose={() => setIsPhotoManagerOpen(false)}
-        initialTargetKey={photoManagerSlotKey}
       />
     </div>
   );

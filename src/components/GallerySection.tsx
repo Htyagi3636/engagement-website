@@ -3,11 +3,7 @@ import { galleryPhotos, siteConfig, GalleryPhoto } from '../data';
 import { LightboxModal } from './LightboxModal';
 import { useCustomPhotos } from '../utils/photoStore';
 
-interface GallerySectionProps {
-  onOpenPhotoManager?: (slotKey?: string) => void;
-}
-
-export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenPhotoManager }) => {
+export const GallerySection: React.FC = () => {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const { getPhoto } = useCustomPhotos();
 
@@ -22,25 +18,14 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenPhotoManag
           Archival Gallery
         </h2>
 
-        {/* DATE & CHANGE PHOTOS BADGES */}
-        <div className="flex flex-wrap items-center justify-center gap-3 my-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded bg-[#fcbf55]/30 border border-[#d49b35] text-[#724d00] font-courier text-xs uppercase tracking-widest shadow-2xs">
-            <span>📅</span>
-            <span>{siteConfig.wedding.displayDate}</span>
-          </div>
-
-          <button
-            onClick={() => onOpenPhotoManager?.('plate-01')}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#ffe9e2] hover:bg-[#ffdacf] border border-[#dac0c2] text-[#6b1d2f] font-courier text-xs uppercase tracking-wider font-semibold transition-colors shadow-2xs cursor-pointer"
-            title="Upload or change pictures in this gallery"
-          >
-            <span>📷</span>
-            <span>Change Photos</span>
-          </button>
+        {/* DATE BADGE */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded bg-[#fcbf55]/30 border border-[#d49b35] text-[#724d00] font-courier text-xs uppercase tracking-widest my-3 shadow-2xs">
+          <span>📅</span>
+          <span>{siteConfig.wedding.displayDate}</span>
         </div>
 
         <p className="font-newsreader italic text-[#544244] text-base max-w-md mx-auto">
-          Tap any vintage still to open the cinema photo-slide viewer or replace pictures.
+          Tap any vintage still to open the cinema photo-slide viewer.
         </p>
       </div>
 
@@ -75,20 +60,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenPhotoManag
                   className="w-full h-full object-cover sepia-[0.38] contrast-95 group-hover:sepia-0 group-hover:contrast-105 transition-all duration-500"
                 />
 
-                {/* Quick edit button on hover */}
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onOpenPhotoManager?.(photo.id);
-                  }}
-                  className="absolute bottom-2 right-2 z-15 px-2 py-1 rounded bg-[#2a170f]/85 hover:bg-[#6b1d2f] text-[#fff8f6] font-courier text-[10px] uppercase font-bold opacity-0 group-hover:opacity-100 transition-opacity border border-[#fcbf55]/60 flex items-center gap-1 shadow-md"
-                  title="Replace this photo"
-                >
-                  <span>📷</span>
-                  <span>Edit</span>
-                </button>
-
                 {/* Subtle vintage photo paper sheen */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity pointer-events-none" />
               </div>
@@ -113,7 +84,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenPhotoManag
         currentIndex={selectedPhotoIndex}
         onClose={() => setSelectedPhotoIndex(null)}
         onNavigate={(newIdx) => setSelectedPhotoIndex(newIdx)}
-        onOpenPhotoManager={onOpenPhotoManager}
       />
     </section>
   );

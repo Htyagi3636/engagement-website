@@ -4,14 +4,14 @@
  * =============================================================================
  * 
  * HOW TO ADD A NEW PHOTO:
- * 1. Place your image file in `/public/photos/` (e.g. `public/photos/my-photo.jpg`)
+ * 1. Place your image file in `public/photos/` (e.g. `public/photos/my-photo.jpg`)
  * 2. Add an entry to the `galleryPhotos` array below:
  *      {
  *        id: "plate-15",
  *        plateNumber: "Plate No. 15",
  *        title: "Under The Moonlight",
  *        caption: "A quiet moment shared away from the crowd.",
- *        src: "/photos/my-photo.jpg",
+ *        src: "./photos/my-photo.jpg",
  *        badge: "Candid", // optional badge tag
  *        tilt: -1.2,       // optional slight tilt degrees (-2 to 2)
  *      }
@@ -76,7 +76,7 @@ export const siteConfig = {
     heroBanner: "The Royal Engagement",
     heroTagline: "A Grand 70mm Love Story — Now Showing",
     productionHouse: "HARI SANGEET & VENUS FILMS PRESENT",
-    heroImage: "/photos/hero.jpg",
+    heroImage: "./photos/hero.jpg",
     credits: {
       music: "R.D. Burman",
       directedBy: "Destiny",
@@ -133,21 +133,21 @@ export const storyMilestones: StoryMilestone[] = [
     quote: '"Stepping into forever amidst floating clouds, glistening bubbles, and starry spotlights."',
     note: "✨ TAP PHOTO TO POP SHIMMERING BUBBLES",
     badge: "Bubble Shower",
-    photoUrl: "/photos/milestone-1.jpg",
+    photoUrl: "./photos/milestone-1.jpg",
     tilt: -1.5
   },
   {
     act: "ACT II: THE SACRED GOLDEN RING EXCHANGE",
     title: "Vows of Devotion",
     quote: '"With eyes locked and hearts united, exchanging golden vows of eternal devotion."',
-    photoUrl: "/photos/milestone-2.jpg",
+    photoUrl: "./photos/milestone-2.jpg",
     tilt: 1.2
   },
   {
     act: "ACT III: HATHPHOOL, MEHNDI & CLASPED HANDS",
     title: "Warm Embrace",
     quote: '"Intricate henna swirls and sparkling bangles sealed in a warm, unbreakable embrace."',
-    photoUrl: "/photos/milestone-3.jpg",
+    photoUrl: "./photos/milestone-3.jpg",
     tilt: -0.8
   },
   {
@@ -164,7 +164,7 @@ export const storyMilestones: StoryMilestone[] = [
     act: "ACT V: FAMILY BLESSINGS ON THE ROYAL THRONE",
     title: "Royal Throne",
     quote: '"Surrounded by warmth, elders\' blessings, and joyous family smiles."',
-    photoUrl: "/photos/milestone-5.jpg",
+    photoUrl: "./photos/milestone-5.jpg",
     tilt: -1.2
   }
 ];
@@ -178,37 +178,37 @@ export const filmReelItems: FilmReelItem[] = [
     id: "reel-101",
     tag: "KODAK 400 • #101",
     title: "Bubble Dance",
-    src: "/photos/plate-01.jpg"
+    src: "./photos/plate-01.jpg"
   },
   {
     id: "reel-102",
     tag: "KODAK 400 • #102",
     title: "Cloud Walk",
-    src: "/photos/plate-02.jpg"
+    src: "./photos/plate-02.jpg"
   },
   {
     id: "reel-103",
     tag: "KODAK 400 • #103",
     title: "Golden Vows",
-    src: "/photos/plate-03.jpg"
+    src: "./photos/plate-03.jpg"
   },
   {
     id: "reel-104",
     tag: "KODAK 400 • #104",
     title: "Regal Aisle",
-    src: "/photos/plate-04.jpg"
+    src: "./photos/plate-04.jpg"
   },
   {
     id: "reel-105",
     tag: "KODAK 400 • #105",
     title: "Gajra & Grace",
-    src: "/photos/plate-07.jpg"
+    src: "./photos/plate-07.jpg"
   },
   {
     id: "reel-106",
     tag: "KODAK 400 • #106",
     title: "Royal Throne",
-    src: "/photos/plate-12.jpg"
+    src: "./photos/plate-12.jpg"
   }
 ];
 
@@ -222,7 +222,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 01",
     title: "The Bubble Symphony Walk",
     caption: "Stepping hand-in-hand through a magical cascade of glistening soap bubbles and stage fog.",
-    src: "/photos/plate-01.jpg",
+    src: "./photos/plate-01.jpg",
     badge: "Bubbles",
     tilt: -1.4
   },
@@ -231,7 +231,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 02",
     title: "Boundless Laughter",
     caption: "Joyous moments shared together under the marigold and lily floral canopy.",
-    src: "/photos/plate-02.jpg",
+    src: "./photos/plate-02.jpg",
     tilt: 1.1
   },
   {
@@ -239,7 +239,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 03",
     title: "The Sacred Golden Ring Exchange",
     caption: "Clasped hands, intricate mehendi, and the golden band that marks forever.",
-    src: "/photos/plate-03.jpg",
+    src: "./photos/plate-03.jpg",
     tilt: -0.9
   },
   {
@@ -247,7 +247,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 04",
     title: "The Royal Ballroom Procession",
     caption: "Walking the royal red carpet flanked by cheers and crystal chandeliers.",
-    src: "/photos/plate-04.jpg",
+    src: "./photos/plate-04.jpg",
     tilt: 1.5
   },
   {
@@ -255,7 +255,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 05",
     title: "Shimmering Stage Smiles",
     caption: "Warm smiles on stage as family shower their loving blessings.",
-    src: "/photos/plate-05.jpg",
+    src: "./photos/plate-05.jpg",
     badge: "Bubbles",
     tilt: -1.2
   },
@@ -264,7 +264,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 06",
     title: "Solemn Vows & Eternal Devotion",
     caption: "Exchanging engagement rings surrounded by both proud sets of parents.",
-    src: "/photos/plate-06.jpg",
+    src: "./photos/plate-06.jpg",
     tilt: 0.8
   },
   {
@@ -272,7 +272,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 07",
     title: "Radiant Bride Shivani",
     caption: "Shivani looking breathtaking with floral gajra, maang tikka, and an unforgettable smile.",
-    src: "/photos/plate-07.jpg",
+    src: "./photos/plate-07.jpg",
     tilt: -1.3
   },
   {
@@ -280,7 +280,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 08",
     title: "The Groom's Adoring Glance",
     caption: "Harshvardhan's eyes filled with pride and quiet adoration.",
-    src: "/photos/plate-08.jpg",
+    src: "./photos/plate-08.jpg",
     tilt: 1.4
   },
   {
@@ -288,7 +288,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 09",
     title: "Candid Elegance",
     caption: "A candid silhouette under the grand ballroom chandeliers.",
-    src: "/photos/plate-09.jpg",
+    src: "./photos/plate-09.jpg",
     tilt: -1.0
   },
   {
@@ -296,7 +296,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 10",
     title: "Golden Jali Splendor",
     caption: "Framed against the ornate vintage Indian architectural backdrop.",
-    src: "/photos/plate-10.jpg",
+    src: "./photos/plate-10.jpg",
     tilt: 1.2
   },
   {
@@ -304,7 +304,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 11",
     title: "Brothers & Companions",
     caption: "Lively camaraderie and laughter with close brothers and companions.",
-    src: "/photos/plate-11.jpg",
+    src: "./photos/plate-11.jpg",
     tilt: -1.5
   },
   {
@@ -312,7 +312,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 12",
     title: "Blessings on the Throne",
     caption: "Elders placing hands of blessing on the newly engaged couple.",
-    src: "/photos/plate-12.jpg",
+    src: "./photos/plate-12.jpg",
     tilt: 0.9
   },
   {
@@ -320,7 +320,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 13",
     title: "Shivani & Her Siblings",
     caption: "Cherished laughter and heartfelt embraces with sisters and cousins.",
-    src: "/photos/plate-13.jpg",
+    src: "./photos/plate-13.jpg",
     tilt: -1.1
   },
   {
@@ -328,10 +328,33 @@ export const galleryPhotos: GalleryPhoto[] = [
     plateNumber: "Plate No. 14",
     title: "Two Families United",
     caption: "The united family portrait celebrating the harmonious union of two souls.",
-    src: "/photos/plate-14.jpg",
+    src: "./photos/plate-14.jpg",
     tilt: 1.3
   }
 ];
+
+/**
+ * EXTRA GALLERY PHOTOS (auto-loaded)
+ * 1. Upload photos to public/photos named "more (1).jpg", "more (2).jpg", "more (3).jpg" ...
+ *    (Windows: select all photos -> press F2 -> type "more" -> Enter)
+ * 2. Set extraPhotoCount to EXACTLY how many "more" photos you uploaded.
+ * They appear in the gallery after Plate No. 14 with the same frames and lightbox.
+ */
+export const extraPhotoCount = 200;
+
+const extraPhotos: GalleryPhoto[] = Array.from({ length: extraPhotoCount }, (_, i) => {
+  const n = i + 1;
+  return {
+    id: `more-${n}`,
+    plateNumber: `Plate No. ${14 + n}`,
+    title: "Cherished Moment",
+    caption: "",
+    src: encodeURI(`./photos/more (${n}).jpg`),
+    tilt: n % 2 === 0 ? 1.1 : -1.1,
+  };
+});
+
+galleryPhotos.push(...extraPhotos);
 
 /**
  * MUSIC PLAYLIST (R.D. Burman Classics)

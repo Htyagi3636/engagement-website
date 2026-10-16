@@ -7,7 +7,6 @@ interface LightboxModalProps {
   currentIndex: number | null;
   onClose: () => void;
   onNavigate: (index: number) => void;
-  onOpenPhotoManager?: (slotKey?: string) => void;
 }
 
 export const LightboxModal: React.FC<LightboxModalProps> = ({
@@ -15,7 +14,6 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
   currentIndex,
   onClose,
   onNavigate,
-  onOpenPhotoManager,
 }) => {
   const { getPhoto } = useCustomPhotos();
   const isOpen = currentIndex !== null && currentIndex >= 0 && currentIndex < photos.length;
@@ -119,19 +117,9 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
       >
         {/* TOP FILM TAG HEADER */}
         <div className="w-full flex items-center justify-between border-b border-[#2a170f]/15 pb-2 mb-3 font-courier text-xs text-[#7f5700]">
-          <div className="flex items-center gap-2">
-            <span className="font-bold tracking-widest uppercase">
-              {currentPhoto.plateNumber}
-            </span>
-            <button
-              onClick={() => onOpenPhotoManager?.(currentPhoto.id)}
-              className="flex items-center gap-1 px-2 py-0.5 rounded bg-[#ffe9e2] hover:bg-[#ffdacf] text-[#6b1d2f] border border-[#dac0c2] text-[10px] font-courier font-bold transition-colors cursor-pointer"
-              title="Replace this photo with your own"
-            >
-              <span>📷</span>
-              <span>Replace Photo</span>
-            </button>
-          </div>
+          <span className="font-bold tracking-widest uppercase">
+            {currentPhoto.plateNumber}
+          </span>
           <span className="text-[#544244]">
             {currentIndex + 1} of {photos.length}
           </span>

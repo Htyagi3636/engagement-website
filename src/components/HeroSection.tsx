@@ -6,10 +6,9 @@ import { useCustomPhotos } from '../utils/photoStore';
 interface HeroSectionProps {
   onPlayMusic?: () => void;
   isPlaying?: boolean;
-  onOpenPhotoManager?: (slotKey?: string) => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onPlayMusic, isPlaying, onOpenPhotoManager }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onPlayMusic, isPlaying }) => {
   const { getPhoto } = useCustomPhotos();
   const heroPhotoSrc = getPhoto('hero', siteConfig.couple.heroImage);
   const [typedTitle, setTypedTitle] = useState<string>('');
@@ -58,25 +57,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onPlayMusic, isPlaying
         <div className="hidden sm:block uppercase tracking-[0.2em] text-[#7f5700] text-[11px]">
           {siteConfig.couple.credits.year} • {siteConfig.couple.credits.premiereLabel}
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onOpenPhotoManager?.('hero')}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#fff3ec] hover:bg-[#ffe2d6] text-[#7f5700] transition-colors border border-[#e5c7a3] cursor-pointer"
-            title="Upload or change photos"
-          >
-            <span>📷</span>
-            <span className="text-[11px] font-newsreader italic">Change Photos</span>
-          </button>
-          <button
-            onClick={onPlayMusic}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#ffe9e2] hover:bg-[#ffdbce] text-[#6b1d2f] transition-colors border border-[#dac0c2] cursor-pointer"
-          >
-            <span>♪</span>
-            <span className="text-[11px] font-newsreader italic">
-              {isPlaying ? 'Playing Melody' : 'Vintage Melody'}
-            </span>
-          </button>
-        </div>
+        <button
+          onClick={onPlayMusic}
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#ffe9e2] hover:bg-[#ffdbce] text-[#6b1d2f] transition-colors border border-[#dac0c2] cursor-pointer"
+        >
+          <span>♪</span>
+          <span className="text-[11px] font-newsreader italic">
+            {isPlaying ? 'Playing Melody' : 'Vintage Melody'}
+          </span>
+        </button>
       </div>
 
       {/* GRAND EASTMAN COLOR BADGE */}
@@ -140,17 +129,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onPlayMusic, isPlaying
             className="w-full h-full object-cover relative z-10 sepia-[0.15] contrast-105"
             loading="eager"
           />
-
-          {/* Quick Replace Photo Button on Poster */}
-          <button
-            type="button"
-            onClick={() => onOpenPhotoManager?.('hero')}
-            className="absolute top-2.5 left-2.5 z-25 flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#2a170f]/85 hover:bg-[#6b1d2f] text-[#fff8f6] text-[10px] sm:text-xs font-courier border border-[#fcbf55]/70 transition-all shadow-md backdrop-blur-xs cursor-pointer"
-            title="Replace this hero photo"
-          >
-            <span>📷</span>
-            <span className="font-bold tracking-wider uppercase">Replace Photo</span>
-          </button>
 
           {/* Vignette Overlay on Photo */}
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#2a170f]/90 via-transparent to-black/20 pointer-events-none" />
