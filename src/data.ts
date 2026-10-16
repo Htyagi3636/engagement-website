@@ -152,13 +152,13 @@ export const storyMilestones: StoryMilestone[] = [
     tilt: -0.8
   },
   {
-    act: "ACT IV: THE LEGENDARY CHOLE KULCHE DATE",
+    act: "ACT IV: WHERE THE FRIENDSHIP BEGAN",
     title: "Where It All Began",
-    quote: '"Spicy bites, laughter, and romance that sparked our journey."',
+    quote: '"Spicy bites, endless laughter, and a friendship that became our forever."',
     isMemoryCard: true,
     cardTitle: "CHOLE KULCHE CHRONICLES",
     cardSubtitle: "FIRST DATE MEMORY",
-    cardQuote: '"Where love blossomed over street-style spicy kulchas and endless sweet laughter."',
+    cardQuote: '"Where a simple friendship grew over street-style spicy kulchas and endless sweet laughter."',
     tilt: 1.0
   },
   {
