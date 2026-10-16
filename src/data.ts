@@ -334,25 +334,120 @@ export const galleryPhotos: GalleryPhoto[] = [
 ];
 
 /**
- * EXTRA GALLERY PHOTOS (auto-loaded)
- * 1. Upload photos to public/photos named "more (1).jpg", "more (2).jpg", "more (3).jpg" ...
- *    (Windows: select all photos -> press F2 -> type "more" -> Enter)
- * 2. Set extraPhotoCount to EXACTLY how many "more" photos you uploaded.
- * They appear in the gallery after Plate No. 14 with the same frames and lightbox.
+ * EXTRA GALLERY PHOTOS
+ * These are the exact file names in public/photos on GitHub.
+ * To add more later: upload the photo to public/photos and add its file name to this list.
  */
-export const extraPhotoCount = 200;
+export const extraPhotoFiles: string[] = [
+  "WhatsApp Image 2026-10-16 at 1.52.42 PM.jpeg",
+  "WhatsApp Image 2026-10-16 at 1.52.55 PM.jpeg",
+  "IMG-20261016-WA0611.jpg",
+  "IMG-20261016-WA0614.jpg",
+  "IMG-20261016-WA0615.jpg",
+  "IMG-20261016-WA0620.jpg",
+  "IMG-20261016-WA0622.jpg",
+  "IMG-20261016-WA0594.jpg",
+  "IMG-20261016-WA0596.jpg",
+  "IMG-20261016-WA0599.jpg",
+  "IMG-20261016-WA0603.jpg",
+  "IMG-20261016-WA0582.jpg",
+  "IMG-20261016-WA0586.jpg",
+  "IMG-20261016-WA0590.jpg",
+  "IMG-20261016-WA0569.jpg",
+  "IMG-20261016-WA0570.jpg",
+  "IMG-20261016-WA0572.jpg",
+  "IMG-20261016-WA0573.jpg",
+  "IMG-20261016-WA0576.jpg",
+  "IMG-20261016-WA0561.jpg",
+  "IMG-20261016-WA0562.jpg",
+  "IMG-20261016-WA0556.jpg",
+  "IMG-20261016-WA0557.jpg",
+  "IMG-20261016-WA0546.jpg",
+  "IMG-20261016-WA0548.jpg",
+  "IMG-20261016-WA0551.jpg",
+  "IMG-20261016-WA0545.jpg",
+  "IMG-20261016-WA0538.jpg",
+  "IMG-20261016-WA0535.jpg",
+  "IMG-20261016-WA0534.jpg",
+  "IMG-20261016-WA0532.jpg",
+  "IMG-20261016-WA0531.jpg",
+  "IMG-20261016-WA0528.jpg",
+  "IMG-20261016-WA0529.jpg",
+  "IMG-20261016-WA0415.jpg",
+  "IMG-20261016-WA0422.jpg",
+  "IMG-20261016-WA0426.jpg",
+  "IMG-20261016-WA0429.jpg",
+  "IMG-20261016-WA0443.jpg",
+  "IMG-20261016-WA0444.jpg",
+  "IMG-20261016-WA0446.jpg",
+  "IMG-20261016-WA0454.jpg",
+  "IMG-20261016-WA0457.jpg",
+  "IMG-20261016-WA0459.jpg",
+  "IMG-20261016-WA0460.jpg",
+  "IMG-20261016-WA0463.jpg",
+  "IMG-20261016-WA0464.jpg",
+  "IMG-20261016-WA0466.jpg",
+  "IMG-20261016-WA0467.jpg",
+  "IMG-20261016-WA0472.jpg",
+  "IMG-20261016-WA0474.jpg",
+  "IMG-20261016-WA0476.jpg",
+  "IMG-20261016-WA0481.jpg",
+  "IMG-20261016-WA0484.jpg",
+  "IMG-20261016-WA0495.jpg",
+  "IMG-20261016-WA0499.jpg",
+  "IMG-20261016-WA0502.jpg",
+  "IMG-20261016-WA0412.jpg",
+  "1.jpg",
+  "IMG-20261016-WA0395.jpg",
+  "IMG-20261016-WA0396.jpg",
+  "IMG-20261016-WA0399.jpg",
+  "IMG-20261016-WA0400.jpg",
+  "IMG-20261016-WA0385.jpg",
+  "IMG-20261016-WA0390.jpg",
+  "IMG-20261016-WA0379.jpg",
+  "IMG-20261016-WA0383.jpg",
+  "IMG-20261016-WA0384.jpg",
+  "IMG-20261016-WA0374.jpg",
+  "IMG-20261016-WA0376.jpg",
+  "IMG-20261016-WA0377.jpg",
+  "IMG-20261016-WA0378.jpg",
+  "IMG-20261016-WA0370.jpg",
+  "IMG-20261016-WA0365.jpg",
+  "IMG-20261016-WA0232.jpg",
+  "IMG-20261016-WA0216.jpg",
+  "IMG-20261016-WA0222.jpg",
+  "IMG-20261016-WA0229.jpg",
+  "IMG-20261016-WA0230.jpg",
+  "IMG-20261016-WA0196.jpg",
+  "IMG-20261016-WA0199.jpg",
+  "IMG-20261016-WA0212.jpg",
+  "IMG-20261016-WA0183.jpg",
+  "IMG-20261016-WA0184.jpg",
+  "IMG-20261016-WA0188.jpg",
+  "IMG-20261016-WA0171.jpg",
+  "IMG-20261016-WA0175.jpg",
+  "IMG-20261016-WA0179.jpg",
+  "IMG-20261016-WA0090.jpg",
+  "IMG-20261016-WA0093.jpg",
+  "IMG-20261016-WA0105.jpg",
+  "IMG-20261016-WA0108.jpg",
+  "IMG-20261016-WA0110.jpg",
+  "IMG-20261016-WA0115.jpg",
+  "IMG-20261016-WA0126.jpg",
+  "IMG-20261016-WA0128.jpg",
+  "IMG-20261016-WA0136.jpg",
+  "IMG-20261016-WA0138.jpg",
+  "IMG-20261016-WA0151.jpg"
+];
 
-const extraPhotos: GalleryPhoto[] = Array.from({ length: extraPhotoCount }, (_, i) => {
-  const n = i + 1;
-  return {
-    id: `more-${n}`,
-    plateNumber: `Plate No. ${14 + n}`,
-    title: "Cherished Moment",
-    caption: "",
-    src: encodeURI(`./photos/more (${n}).jpg`),
-    tilt: n % 2 === 0 ? 1.1 : -1.1,
-  };
-});
+const extraPhotos: GalleryPhoto[] = extraPhotoFiles.map((file, i) => ({
+  id: `extra-${i + 1}`,
+  plateNumber: `Plate No. ${15 + i}`,
+  title: "Cherished Moment",
+  caption: "",
+  src: encodeURI(`./photos/${file}`),
+  tilt: i % 2 === 0 ? -1.1 : 1.1,
+}));
 
 galleryPhotos.push(...extraPhotos);
 
