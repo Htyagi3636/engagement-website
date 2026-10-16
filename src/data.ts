@@ -162,10 +162,10 @@ export const storyMilestones: StoryMilestone[] = [
     tilt: 1.0
   },
   {
-    act: "ACT V: FAMILY BLESSINGS ON THE ROYAL THRONE",
+    act: "ACT V: THE BROTHER'S BRIGADEE",
     title: "Royal Throne",
-    quote: '"Surrounded by warmth, elders\' blessings, and joyous family smiles."',
-    photoUrl: encodeURI("./photos/more (80).jpg"),
+    quote: '"My first friends, my forever cheerleaders, always by my side on every big day."',
+    photoUrl: "./photos/IMG-20261016-WA0551.jpg",
     tilt: -1.2
   }
 ];
