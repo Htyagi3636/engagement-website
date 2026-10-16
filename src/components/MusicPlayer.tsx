@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { musicPlaylist, SongTrack } from '../data';
 
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
-
 interface MusicPlayerProps {
   isPlaying: boolean;
   onTogglePlay: () => void;
@@ -19,178 +12,80 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   isPlaying,
   onTogglePlay,
   isLetterOpen,
-  shouldStartAudio,
 }) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [playerReady, setPlayerReady] = useState<boolean>(false);
 
-  const playerRef = useRef<any>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const currentSong: SongTrack = musicPlaylist[currentTrackIndex] || musicPlaylist[0];
 
-  // Initialize YouTube IFrame Player API
-  useEffect(() => {
-    const initPlayer = () => {
-      if (!window.YT || !window.YT.Player) return;
-
-      playerRef.current = new window.YT.Player('youtube-audio-frame', {
-        height: '0',
-        width: '0',
-        videoId: currentSong.youtubeId,
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          modestbranding: 1,
-          playsinline: 1,
-          rel: 0,
-        },
-        events: {
-          onReady: (event: any) => {
-            setPlayerReady(true);
-            event.target.setVolume(0);
-          },
-          onStateChange: (event: any) => {
-            // When track ends, advance to next track
-            if (event.data === 0) {
-              handleNextTrack();
-            }
-          },
-        },
-      });
-    };
-
-    if (!window.YT) {
-      const existingScript = document.querySelector('script[src*="youtube.com/iframe_api"]');
-      if (!existingScript) {
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        document.head.appendChild(tag);
-      }
-      const existingCallback = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
-        if (typeof existingCallback === 'function') {
-          try {
-            existingCallback();
-          } catch {
-            // ignore
-          }
-        }
-        initPlayer();
-      };
-    } else {
-      initPlayer();
-    }
-
-    return () => {
-      try {
-        if (playerRef.current?.destroy) {
-          playerRef.current.destroy();
-        }
-      } catch {
-        // cleanup ignore
-      }
-    };
-  }, []);
-
-  // Update track when index changes
-  useEffect(() => {
-    if (playerReady && playerRef.current?.loadVideoById) {
-      playerRef.current.loadVideoById(currentSong.youtubeId);
-      if (isPlaying) {
-        playerRef.current.playVideo();
-      }
-    }
-  }, [currentTrackIndex, playerReady]);
-
-  // Handle play/pause
-  useEffect(() => {
-    if (!playerReady || !playerRef.current) return;
-
-    if (isPlaying) {
-      try {
-        playerRef.current.playVideo();
-      } catch (err) {
-        console.warn('Playback error:', err);
-      }
-    } else {
-      try {
-        playerRef.current.pauseVideo();
-      } catch (err) {
-        console.warn('Pause error:', err);
-      }
-    }
-  }, [isPlaying, playerReady]);
-
-  // Volume fade-in when show starts & ducking during love letter
-  useEffect(() => {
-    if (!playerReady || !playerRef.current) return;
-
-    const targetVolume = isMuted ? 0 : isLetterOpen ? 22 : 60;
-
-    let currentVol = 0;
-    try {
-      currentVol = playerRef.current.getVolume() || 0;
-    } catch {
-      currentVol = 0;
-    }
-
-    // Smooth volume fade
-    const step = targetVolume > currentVol ? 5 : -5;
-    const interval = setInterval(() => {
-      if (
-        (step > 0 && currentVol >= targetVolume) ||
-        (step < 0 && currentVol <= targetVolume) ||
-        !playerRef.current?.setVolume
-      ) {
-        clearInterval(interval);
-        return;
-      }
-      currentVol += step;
-      try {
-        playerRef.current.setVolume(Math.min(100, Math.max(0, currentVol)));
-      } catch {
-        clearInterval(interval);
-      }
-    }, 80);
-
-    return () => clearInterval(interval);
-  }, [isPlaying, isMuted, isLetterOpen, playerReady]);
-
-  // Next Track
+  // Next Track (loops back to the first song)
   const handleNextTrack = useCallback(() => {
     setCurrentTrackIndex((prev) => (prev + 1) % musicPlaylist.length);
   }, []);
 
-  // Toggle Mute
-  const handleToggleMute = () => {
-    if (!playerRef.current) return;
-    if (isMuted) {
-      setIsMuted(false);
-      try {
-        playerRef.current.unMute();
-        playerRef.current.setVolume(isLetterOpen ? 22 : 60);
-      } catch {
-        // ignore
-      }
-    } else {
-      setIsMuted(true);
-      try {
-        playerRef.current.mute();
-      } catch {
-        // ignore
-      }
+  // Load the song file when the track changes
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !currentSong?.audioSrc) return;
+    audio.src = currentSong.audioSrc;
+    audio.load();
+    if (isPlaying) {
+      audio.play().catch((err) => console.warn('Playback error:', err));
     }
-  };
+  }, [currentTrackIndex]);
+
+  // Play / pause
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.play().catch((err) => console.warn('Playback error:', err));
+    } else {
+      audio.pause();
+    }
+  }, [isPlaying]);
+
+  // Smooth volume fade-in, and softer volume while the love letter is open
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const target = isMuted ? 0 : isLetterOpen ? 0.22 : 0.6;
+    const interval = setInterval(() => {
+      const diff = target - audio.volume;
+      if (Math.abs(diff) < 0.03) {
+        audio.volume = target;
+        clearInterval(interval);
+        return;
+      }
+      audio.volume = Math.min(1, Math.max(0, audio.volume + (diff > 0 ? 0.03 : -0.03)));
+    }, 80);
+    return () => clearInterval(interval);
+  }, [isPlaying, isMuted, isLetterOpen]);
+
+  const handleToggleMute = () => setIsMuted((prev) => !prev);
 
   return (
     <>
-      {/* Hidden YouTube IFrame */}
-      <div className="hidden pointer-events-none" aria-hidden="true">
-        <div id="youtube-audio-frame" />
-      </div>
+      {/* Hidden audio element that plays the song file */}
+      <audio
+        ref={audioRef}
+        src={currentSong?.audioSrc}
+        preload="auto"
+        onEnded={() => {
+          if (musicPlaylist.length > 1) {
+            handleNextTrack();
+          } else if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(() => {});
+          }
+        }}
+        onLoadedMetadata={(e) => {
+          e.currentTarget.volume = 0;
+        }}
+        className="hidden"
+      />
 
       {/* FLOATING VINTAGE GRAMOPHONE / VINYL PLAYER */}
       <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 select-none">
