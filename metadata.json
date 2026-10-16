@@ -1,0 +1,6 @@
+{
+  "name": "Shivani & Harshvardhan - A Retro Love Story",
+  "description": "A romantic 1970s Bollywood cinema style engagement website celebrating Shivani and Harshvardhan's royal engagement.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
