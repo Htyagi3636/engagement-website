@@ -120,12 +120,6 @@ export const CurtainIntro: React.FC<CurtainIntroProps> = ({ onStartShow, isOpen 
             <p className="font-courier text-[#fcbf55] text-xs uppercase tracking-[0.25em] mt-5">
               1970 35MM EASTMANCOLOR LEADER
             </p>
-            <button
-              onClick={() => setCountdownFinished(true)}
-              className="mt-3 text-[#fff8f6]/60 hover:text-[#fcbf55] text-xs font-courier underline transition-colors"
-            >
-              Skip Leader &gt;&gt;
-            </button>
           </div>
         ) : (
           /* Ready Button: "Tap to Start the Show ♥" */
